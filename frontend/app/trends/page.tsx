@@ -35,7 +35,7 @@ export default function TrendsPage() {
       </motion.div>
 
       {/* Search */}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="glass p-4 mb-6 flex gap-3">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="glass p-4 mb-6 flex flex-col sm:flex-row gap-3">
         <div className="flex-1 flex items-center gap-3 bg-[#050814] rounded-xl px-4 py-3 border border-[#1a2540]">
           <Search size={16} className="text-[#7b8aad]" />
           <input
@@ -99,26 +99,31 @@ export default function TrendsPage() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.08 }}
-                className="glass p-5 flex items-center gap-4 hover:border-indigo-500/30 transition-all"
+                className="glass p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-indigo-500/30 transition-all"
               >
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 border border-indigo-500/20">
-                  <span className="text-indigo-400 font-bold text-sm">#{i + 1}</span>
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-white capitalize">{t.trend}</span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${momentumColor(t.momentum)}`}>{t.momentum}</span>
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/20 flex items-center justify-center flex-shrink-0 border border-indigo-500/20">
+                    <span className="text-indigo-400 font-bold text-sm">#{i + 1}</span>
                   </div>
-                  <div className="flex flex-wrap gap-1 mt-1">
-                    {(t.related_topics || []).slice(0, 4).map((rt: string) => (
-                      <span key={rt} className="text-xs text-[#7b8aad] bg-[#1a2540] px-2 py-0.5 rounded-full">{rt}</span>
-                    ))}
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <span className="font-semibold text-white capitalize">{t.trend}</span>
+                      <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${momentumColor(t.momentum)}`}>{t.momentum}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-1 mt-1">
+                      {(t.related_topics || []).slice(0, 4).map((rt: string) => (
+                        <span key={rt} className="text-xs text-[#7b8aad] bg-[#1a2540] px-2 py-0.5 rounded-full">{rt}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-                <div className="text-right flex-shrink-0">
-                  <div className="text-2xl font-bold text-white">{t.trend_score}</div>
-                  <div className="text-xs text-[#7b8aad]">trend score</div>
-                  <div className="text-xs text-emerald-400 mt-1 flex items-center gap-1 justify-end">
+                <div className="text-left sm:text-right flex-shrink-0 border-t border-[#1a2540] sm:border-0 pt-3 sm:pt-0 flex sm:flex-col items-center sm:items-end justify-between sm:justify-center gap-2 sm:gap-0">
+                  <div>
+                    <span className="text-xs text-[#7b8aad] sm:hidden mr-2">Trend Score:</span>
+                    <span className="text-2xl font-bold text-white inline-block align-middle">{t.trend_score}</span>
+                    <span className="text-[10px] text-[#7b8aad] block sm:inline-block sm:ml-2">trend score</span>
+                  </div>
+                  <div className="text-xs text-emerald-400 mt-1 flex items-center gap-1">
                     <ArrowUpRight size={12} /> {t.growth_rate}
                   </div>
                 </div>

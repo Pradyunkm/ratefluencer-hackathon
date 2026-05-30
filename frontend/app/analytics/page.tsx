@@ -44,13 +44,13 @@ export default function AnalyticsPage() {
       </motion.div>
 
       {loading ? (
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {[...Array(4)].map((_, i) => <div key={i} className="glass p-6 h-64 animate-pulse" />)}
         </div>
       ) : data ? (
         <div className="space-y-6">
           {/* Top Stats */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { label: "Content Generated", value: data.total_content_generated, icon: Zap, color: "text-indigo-400" },
               { label: "Avg Virality Score", value: `${data.avg_virality_score}/100`, icon: TrendingUp, color: "text-cyan-400" },
@@ -64,7 +64,7 @@ export default function AnalyticsPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Radar Chart */}
             <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="glass p-6">
               <h2 className="text-sm font-semibold text-[#7b8aad] uppercase tracking-wider mb-4">Virality Dimensions</h2>
@@ -100,7 +100,7 @@ export default function AnalyticsPage() {
           {/* Platform Breakdown */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="glass p-6">
             <h2 className="text-sm font-semibold text-[#7b8aad] uppercase tracking-wider mb-4">Platform Performance</h2>
-            <div className="grid grid-cols-4 gap-4 mb-6">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
               {data.platform_breakdown.map((p: any, i: number) => (
                 <div key={p.platform} className="bg-[#050814] rounded-xl p-4 border border-[#1a2540]">
                   <div className="text-lg font-bold text-white">{p.avg_score}<span className="text-sm text-[#7b8aad]">/100</span></div>

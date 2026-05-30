@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Brain, Zap, AlertTriangle, CheckCircle, Lightbulb, Loader2, Target } from "lucide-react";
+import { Brain, Zap, AlertTriangle, CheckCircle, Lightbulb, Loader2, Target, TrendingUp } from "lucide-react";
 import { api } from "@/lib/api";
 
 export default function ReasoningPage() {
@@ -32,7 +32,7 @@ export default function ReasoningPage() {
     { label: "Emotional Triggers", value: result.emotional_trigger_score, icon: Brain },
     { label: "CTA Effectiveness", value: result.cta_effectiveness, icon: Target },
     { label: "Hashtag Quality", value: result.hashtag_quality, icon: CheckCircle },
-    { label: "Trend Alignment", value: result.trend_alignment, icon: TrendingUpIcon },
+    { label: "Trend Alignment", value: result.trend_alignment, icon: TrendingUp },
   ] : [];
 
   return (
@@ -42,7 +42,7 @@ export default function ReasoningPage() {
         <p className="text-[#7b8aad]">Explainable AI — understand WHY content will or won't go viral</p>
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Input */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="glass p-6 h-fit">
           <h2 className="text-sm font-semibold text-[#7b8aad] uppercase tracking-wider mb-4">Analyze Content</h2>
@@ -116,7 +116,8 @@ export default function ReasoningPage() {
                 <div className="space-y-3">
                   {dimensions.map((d: any) => (
                     <div key={d.label} className="flex items-center gap-3">
-                      <div className="w-28 text-xs text-[#7b8aad]">{d.label}</div>
+                      <d.icon size={14} className="text-[#7b8aad] flex-shrink-0" />
+                      <div className="w-28 text-xs text-[#7b8aad] truncate">{d.label}</div>
                       <div className="flex-1 h-2 bg-[#1a2540] rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
@@ -145,11 +146,3 @@ export default function ReasoningPage() {
   );
 }
 
-function TrendingUpIcon({ size }: { size: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-      <polyline points="17 6 23 6 23 12" />
-    </svg>
-  );
-}

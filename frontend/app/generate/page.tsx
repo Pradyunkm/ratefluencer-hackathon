@@ -63,7 +63,7 @@ export default function GeneratePage() {
         <p className="text-[#7b8aad]">4-agent AI pipeline — from topic to viral-ready content</p>
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left: Input */}
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
           <div className="glass p-6 mb-4">

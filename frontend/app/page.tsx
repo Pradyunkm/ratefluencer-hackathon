@@ -48,7 +48,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Stats */}
-      <div className="grid grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {stats.map((s, i) => (
           <motion.div
             key={s.label}
@@ -69,14 +69,14 @@ export default function Dashboard() {
         <h2 className="text-lg font-semibold mb-5 flex items-center gap-2">
           <Cpu size={18} className="text-indigo-400" /> Multi-Agent Pipeline
         </h2>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3">
           {agents.map((a, i) => (
-            <div key={a.name} className="flex items-center gap-3 flex-1">
+            <div key={a.name} className="flex flex-col lg:flex-row lg:items-center gap-4 lg:gap-3 flex-1">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.4 + i * 0.15, type: "spring" }}
-                className="flex-1 rounded-xl p-4 border border-[#1a2540] bg-[#050814]"
+                className="w-full rounded-xl p-4 border border-[#1a2540] bg-[#050814]"
               >
                 <div className={`text-xs font-bold bg-gradient-to-r ${a.color} bg-clip-text text-transparent mb-1`}>{a.name}</div>
                 <div className="text-xs text-[#7b8aad]">{a.desc}</div>
@@ -89,14 +89,18 @@ export default function Dashboard() {
                   />
                 </div>
               </motion.div>
-              {i < agents.length - 1 && <ArrowRight size={16} className="text-[#1a2540] flex-shrink-0" />}
+              {i < agents.length - 1 && (
+                <div className="flex justify-center lg:block flex-shrink-0">
+                  <ArrowRight size={16} className="text-[#1a2540] rotate-90 lg:rotate-0" />
+                </div>
+              )}
             </div>
           ))}
         </div>
       </motion.div>
 
       {/* Quick Actions */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {[
           { href: "/generate", icon: Zap, title: "Generate Content", desc: "Run the full AI pipeline on any topic", color: "from-indigo-500 to-violet-600" },
           { href: "/trends", icon: TrendingUp, title: "Explore Trends", desc: "Live Google Trends intelligence", color: "from-cyan-500 to-blue-600" },

@@ -29,9 +29,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <div className="mesh-bg" />
 
       {/* Desktop Sidebar (visible on lg screen and above) */}
-      <div className="hidden lg:block w-64 min-w-[256px] flex-shrink-0">
-        <Sidebar />
-      </div>
+      <Sidebar />
 
       {/* Mobile/Tablet Sidebar (using Framer Motion for premium animations) */}
       <AnimatePresence>
@@ -60,7 +58,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </AnimatePresence>
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden">
+      <div className="flex-1 flex flex-col min-h-screen overflow-x-hidden lg:pl-64">
         {/* Mobile Header Bar */}
         <header className="lg:hidden flex items-center justify-between px-6 py-4 bg-[#0a0f1e]/80 backdrop-blur-md border-b border-[#1a2540] sticky top-0 z-30">
           <div className="flex items-center gap-3">

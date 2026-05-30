@@ -23,7 +23,11 @@ export default function Sidebar({ onClose, isMobile }: SidebarProps) {
   return (
     <aside
       style={{ width: "256px", minWidth: "256px" }}
-      className="fixed top-0 left-0 h-full bg-[#0a0f1e] border-r border-[#1a2540] flex flex-col z-50"
+      className={
+        isMobile
+          ? "fixed top-0 left-0 h-full bg-[#080d19] border-r border-[#1e294b]/60 flex flex-col z-50 shadow-2xl"
+          : "fixed top-4 left-4 bottom-4 bg-[#080d1a]/55 backdrop-blur-xl border border-white/5 rounded-2xl flex flex-col z-40 shadow-[0_0_50px_rgba(0,0,0,0.55)] glow-border"
+      }
     >
       {/* Logo */}
       <div className="px-5 py-5 border-b border-[#1a2540] flex items-center justify-between">
